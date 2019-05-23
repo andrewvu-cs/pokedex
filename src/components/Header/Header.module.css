@@ -1,0 +1,13 @@
+.Header {
+    text-align: center;
+    /* margin: auto;
+    width: 80%; */
+    background-color: #EF5351;
+    color: #FCC103;
+    padding: 16px 0;
+    text-shadow: -2px -2px 0 #4261A1, 2px -2px 0 #4261A1, -2px 2px 0 #4261A1, 2px 2px 0 #4261A1;
+}
+
+.Header h1{
+    margin: 0;
+}
