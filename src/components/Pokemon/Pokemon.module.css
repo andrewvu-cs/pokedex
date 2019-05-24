@@ -1,0 +1,21 @@
+.Pokemon {
+    width: 45%;
+    display: inline-block;
+    border: 1px solid black;
+    box-shadow: 1px 1px black;
+    border-radius: 16px;
+    text-align: center;
+    margin-left: 3.2%;
+    margin-bottom: 16px;
+    margin-top: 16px;
+    background-color: white;
+    /* margin-right */
+    /* flex-wrap: wrap; */
+}
+
+@media (min-width: 500px) {
+    .Pokemon{
+        width: 22%;
+        margin-left: 2.5%;
+    }
+}
