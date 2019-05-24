@@ -6,8 +6,8 @@
     border-radius: 16px;
     text-align: center;
     margin-left: 3.2%;
-    margin-bottom: 16px;
     margin-top: 16px;
+    margin-bottom: 16px;
     background-color: white;
     /* margin-right */
     /* flex-wrap: wrap; */
@@ -18,4 +18,8 @@
         width: 22%;
         margin-left: 2.5%;
     }
+
+    /* .Pokemon img{
+        width: 45%;
+    } */
 }

@@ -7,6 +7,8 @@ const header = (props) => {
         <div className={classes.Header}>
             <h1>Pokédex!</h1>
             <h2>Built using ReactJS</h2>
+
+            <h3>1ST GEN PKMN ONLY!</h3>
         </div>
     )
 }

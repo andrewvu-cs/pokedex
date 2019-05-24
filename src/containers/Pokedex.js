@@ -68,8 +68,6 @@ class Pokedex extends Component{
     }
 
     
-
-    
     render(){
        
         // WHERE I MAP ALL POKEMON AFTER OBTAINING EVERY NAME
