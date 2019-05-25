@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-// import Aux from '../hoc/Aux';
+import Aux from '../hoc/Aux';
 import Pokemon from '../components/Pokemon/Pokemon';
 import classes from './Pokedex.module.css';
+import Modal from '../components/UI/Modal/Modal';
+import PokemonSummary from '../components/PokemonSummary/PokemonSummary';
 
 class Pokedex extends Component{
     state = {
@@ -11,7 +13,13 @@ class Pokedex extends Component{
         names: [],
         urls: [],
         imgResults: [],
-        sprites: []
+        sprites: [],
+        display: false,
+        selected : [],
+        selectedName: '',
+        selectedWeight: '',
+        selectedSprite: '',
+        selectedHeight: ''
     }
 
     componentDidMount(){
@@ -67,7 +75,23 @@ class Pokedex extends Component{
 
     }
 
-    
+    displayOpenHandler = (index) =>{
+        axios.get(this.state.urls[index])
+            .then(response=>{
+                this.setState({selected: response.data})
+            })
+        this.setState({
+            display: true,
+            selectedName: this.state.names[index],
+            selectedSprite: this.state.sprites[index]
+        })
+    }
+
+    displayExitHandler = () =>{
+        this.setState({display: false})
+    }
+
+
     render(){
        
         // WHERE I MAP ALL POKEMON AFTER OBTAINING EVERY NAME
@@ -76,16 +100,30 @@ class Pokedex extends Component{
                 name = {result.name}
                 key = {pkmnKey}
                 image = {this.state.sprites[pkmnKey]}
+                clicked = {() =>this.displayOpenHandler(pkmnKey)}
             />;
         });
         return(
-            <div className={classes.Pokedex}>
-                 {/* <Pokemon 
-                    image={this.state.sprite}
-                    name={this.state.pokemon}
-                    /> */}
-                {pokemons}
-            </div>
+            <Aux>
+                <Modal show={this.state.display} modalClosed={this.displayExitHandler}>
+                    <PokemonSummary 
+                        id={this.state.selected.id}
+                        name={this.state.selectedName}
+                        sprite={this.state.selectedSprite}
+                        height={this.state.selected.height}
+                        weight={this.state.selected.weight}
+                        >
+
+                    </PokemonSummary>
+                </Modal>
+                <div className={classes.Pokedex}>
+                    {/* <Pokemon 
+                        image={this.state.sprite}
+                        name={this.state.pokemon}
+                        /> */}
+                    {pokemons}
+                </div>
+            </Aux>
         );
     }
 }
